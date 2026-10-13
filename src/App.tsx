@@ -3,6 +3,8 @@ import SplitText from './components/SplitText'
 import TextType from './components/TextType'
 
 function App() {
+  const hostname = window.location.hostname
+
   return (
     <div className="relative h-screen w-full overflow-hidden bg-gray-900">
       {/* Animated terminal-rain style background */}
@@ -31,7 +33,7 @@ function App() {
         <div className="h-1/2 w-1/4 rounded-lg border border-gray-700/70 bg-gray-900/60 p-8 pt-8 text-center shadow-lg backdrop-blur-md">
           
           {/* Fixed-height block row so the typing effect cannot shift it */}
-          <div className="flex min-h-16 items-center justify-center">
+          <div className="flex min-h-16 flex-col items-center justify-center">
             <SplitText
               text="Hello Solutions Architect!"
               className="text-2xl font-semibold text-white"
@@ -45,6 +47,9 @@ function App() {
               textAlign="center"
               onLetterAnimationComplete={() => {}}
             />
+            <p className="mt-1 text-xs font-medium tracking-wide text-gray-500">
+              {hostname || 'unknown host'}
+            </p>
           </div>
 
           {/* Reserved block row for the typing subtitle */}
